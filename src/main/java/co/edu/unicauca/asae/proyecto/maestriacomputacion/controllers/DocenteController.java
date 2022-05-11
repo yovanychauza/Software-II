@@ -154,10 +154,14 @@ public class DocenteController {
 
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al actualizar el docente en la base de datos");
-			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			try {
+				response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));	
+			} catch (Exception ex) {
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);	
+			}
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-
+	
 		response.put("mensaje", "El docente ha sido actualizado con éxito!");
 		response.put("docente", clienteUpdated);
 
@@ -172,7 +176,11 @@ public class DocenteController {
 		    docenteService.delete(id);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al eliminar el docente de la base de datos");
-			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			try {
+				response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));	
+			} catch (Exception ex) {
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);	
+			}
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
