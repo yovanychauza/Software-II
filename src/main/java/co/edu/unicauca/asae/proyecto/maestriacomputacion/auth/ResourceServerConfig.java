@@ -18,19 +18,20 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
+	private static final String ADMIN= "ADMIN";
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 
 				.antMatchers(HttpMethod.GET, "/api/documentos", "/api/documentos/**", "/api/documentos/list/page/**/**",
 						"/api/estudiante/**/estadosSinPaginacion/", "/api/estudiante/**")
-				.hasAnyRole("USER", "ADMIN")
-				.antMatchers(HttpMethod.POST, "/api/documentos/crear/**").hasAnyRole("ADMIN")
-				.antMatchers(HttpMethod.PUT, "/api/documentos/actualizar/**/**").hasAnyRole("ADMIN")
-				.antMatchers(HttpMethod.DELETE, "/api/documentos/**/**").hasAnyRole("ADMIN")
-				.antMatchers(HttpMethod.POST, "/api/reingresos").hasAnyRole("ADMIN")
-				.antMatchers(HttpMethod.PUT, "/api/reingresos/**").hasAnyRole("ADMIN")
-				.antMatchers(HttpMethod.DELETE, "/api/reingresos/**").hasAnyRole("ADMIN")
+				.hasAnyRole("USER", ADMIN)
+				.antMatchers(HttpMethod.POST, "/api/documentos/crear/**").hasAnyRole(ADMIN)
+				.antMatchers(HttpMethod.PUT, "/api/documentos/actualizar/**/**").hasAnyRole(ADMIN)
+				.antMatchers(HttpMethod.DELETE, "/api/documentos/**/**").hasAnyRole(ADMIN)
+				.antMatchers(HttpMethod.POST, "/api/reingresos").hasAnyRole(ADMIN)
+				.antMatchers(HttpMethod.PUT, "/api/reingresos/**").hasAnyRole(ADMIN)
+				.antMatchers(HttpMethod.DELETE, "/api/reingresos/**").hasAnyRole(ADMIN)
 				.anyRequest().anonymous();
 
 	}

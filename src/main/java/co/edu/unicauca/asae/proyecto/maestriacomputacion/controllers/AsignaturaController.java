@@ -4,13 +4,10 @@ import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -28,7 +25,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import co.edu.unicauca.asae.proyecto.maestriacomputacion.entities.Acta;
 import co.edu.unicauca.asae.proyecto.maestriacomputacion.entities.Asignatura;
-import co.edu.unicauca.asae.proyecto.maestriacomputacion.response.ActaResponseRest;
 import co.edu.unicauca.asae.proyecto.maestriacomputacion.response.AsignaturaResponseRest;
 import co.edu.unicauca.asae.proyecto.maestriacomputacion.services.IAsignaturaService;
 
