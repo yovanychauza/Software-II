@@ -67,10 +67,10 @@ public class AsignaturaController {
 			this.actualizarActasAsignatura(asignatura.getCodigo(), actasIds);
 			
 			if (asignaturaDB != null) {
-				respuesta = new ResponseEntity<Asignatura>(asignaturaDB,HttpStatus.OK);
+				respuesta = new ResponseEntity<>(asignaturaDB,HttpStatus.OK);
 			}else {
 				respuestas.put("mensaje", "La Asignatura con Codigo: "+codigo+" no existe en la base de datos");
-				respuesta = new ResponseEntity<HashMap<String, Object>>(respuestas,HttpStatus.NOT_FOUND);
+				respuesta = new ResponseEntity<>(respuestas,HttpStatus.NOT_FOUND);
 			}
 			
 		} catch (DataAccessException e) {
