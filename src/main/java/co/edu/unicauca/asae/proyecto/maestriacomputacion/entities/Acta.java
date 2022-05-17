@@ -54,7 +54,7 @@ public class Acta implements Document {
 	private Integer number;
 	
 	@DateTimeFormat(iso = ISO.DATE)
-	@Column(name = "fecha_aprobacion")
+	@Column(name = "fecha_aprobacionj")
 	@PastOrPresent(message = "{acta.fecha.past}")
 	private Date approvalDate;
 
