@@ -11,7 +11,7 @@ on:
 env:
   REGION: us-east4 # Cloud Run zone
   PROJECT_ID: xirius-test # GCP project
-  BASE_IMAGE: gcr.io/master-computin-test/master-computing #Container registry entry for the api
+  BASE_IMAGE: gcr.io/xirius-test/master-computing #Container registry entry for the api
   SERVICE_NAME: master-computing #Cloud run service name
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
