@@ -4,10 +4,13 @@ import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -25,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import co.edu.unicauca.asae.proyecto.maestriacomputacion.entities.Acta;
 import co.edu.unicauca.asae.proyecto.maestriacomputacion.entities.Asignatura;
+import co.edu.unicauca.asae.proyecto.maestriacomputacion.response.ActaResponseRest;
 import co.edu.unicauca.asae.proyecto.maestriacomputacion.response.AsignaturaResponseRest;
 import co.edu.unicauca.asae.proyecto.maestriacomputacion.services.IAsignaturaService;
 
@@ -67,10 +71,10 @@ public class AsignaturaController {
 			this.actualizarActasAsignatura(asignatura.getCodigo(), actasIds);
 			
 			if (asignaturaDB != null) {
-				respuesta = new ResponseEntity<>(asignaturaDB,HttpStatus.OK);
+				respuesta = new ResponseEntity<Asignatura>(asignaturaDB,HttpStatus.OK);
 			}else {
 				respuestas.put("mensaje", "La Asignatura con Codigo: "+codigo+" no existe en la base de datos");
-				respuesta = new ResponseEntity<>(respuestas,HttpStatus.NOT_FOUND);
+				respuesta = new ResponseEntity<HashMap<String, Object>>(respuestas,HttpStatus.NOT_FOUND);
 			}
 			
 		} catch (DataAccessException e) {
